@@ -16,3 +16,10 @@ img {
 .btn {
     border: 1px solid black;
 }
+
+.card {
+    max-width: 300px;
+    float: left;
+    margin-top: 20px;
+    margin-right: 10px;
+}

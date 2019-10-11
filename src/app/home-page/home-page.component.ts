@@ -13,6 +13,8 @@ export class HomePageComponent implements OnInit {
   movies : Movie[];
   genreSelected : string = '';
 
+  movieSearched : string = '';
+
   constructor(private logService : LogService,
               private router : Router,
               private route : ActivatedRoute) { 
@@ -25,6 +27,7 @@ export class HomePageComponent implements OnInit {
   passInfoToDetails(movie:Movie) {
     this.logService.passMovieToDetails.emit(movie);
   }
+
 
 
 }

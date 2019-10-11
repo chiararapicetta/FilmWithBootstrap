@@ -1,14 +1,22 @@
-import { Directive, ElementRef, OnInit } from '@angular/core';
+import { Directive, ElementRef, OnInit, HostListener, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[appFilmHighlited]'
 })
-export class FilmHighlitedDirective implements OnInit{
+export class FilmHighlitedDirective implements OnInit {
 
-  constructor(private elementRef : ElementRef) { }
+  constructor(private elementRef : ElementRef,
+              private renderer : Renderer2) { }
+
+  @HostListener('click') onClick() {
+    this.renderer.setStyle(this.elementRef.nativeElement, 'border', '2px solid black');
+  }
+
+  /*@HostListener('hover') onHover() {
+    this.renderer.setElementStyle(this.elementRef.nativeElement, 'backgroundColor', 'blue');
+  }*/
 
   ngOnInit() {
-    this.elementRef.nativeElement.style.border = '2px solid black';
   }
 
 }
