@@ -1,0 +1,16 @@
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-7">
+            <h1 class="display-4">{{movie.title}}</h1>
+            <p class="lead">{{movie.description}}</p>
+            <hr class="my-4">
+            <h2>Director: {{movie.director}} </h2>
+            <h3>Minutes: {{movie.minutes}} </h3>
+            <a class="btn btn-primary btn-lg" [routerLink]="['']" role="button">Close</a>
+        </div>
+        <div class="col-md-5">
+            <img src="{{movie.imgUrl}}">
+        </div>
+    </div>
+
+</div>

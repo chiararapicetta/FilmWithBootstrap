@@ -1,0 +1,26 @@
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" [routerLink]="['']" (click)="genreSelected=''">MovieDB</a>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-info" (click)="genreSelected='Action'">Action</button>
+        <button type="button" class="btn btn-info" (click)="genreSelected='Fantasy'">Fantasy</button>
+        <button type="button" class="btn btn-info" (click)="genreSelected='Comic'">Comic</button>
+    </div>
+    <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search">
+        <button class="btn btn-info my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</nav>
+
+<div class="card-deck">
+    <div class="card" *ngFor="let movie of movies">
+        <div *ngIf="genreSelected == movie.genre || genreSelected==''">
+            <img src="{{movie.imgUrl}}" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">{{movie.title}}</h5>
+                <a (click)="passInfoToDetails(movie)" [routerLink]="['/details', movie.id]" >View description</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>
