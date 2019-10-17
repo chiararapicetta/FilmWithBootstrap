@@ -1,31 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import { LogService } from '../services/log.service';
 import { Movie } from '../models/movie.model';
-import { ActivatedRoute, Data } from '@angular/router';
+import { ActivatedRoute, Data, Params } from '@angular/router';
+import { FnParam } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-movie-details',
   templateUrl: './movie-details.component.html',
-  styleUrls: ['./movie-details.component.css']
+  styleUrls: ['./movie-details.component.css'],
+  providers: [LogService]
 })
 export class MovieDetailsComponent implements OnInit {
 
-  movie : Movie ;
+  movies : Movie[];
+  id : number;
+  movie : Movie;
 
-  constructor(private logservice : LogService,
+  constructor(private logService : LogService,
               private route : ActivatedRoute) {
     
    }
 
   ngOnInit() {
-    console.log(this.movie);
-    this.route.data.subscribe(
-      (data : Data) => {
-        this.movie = data['server'];
+    this.movies = this.logService.getMovies();
+    
+    this.id = this.route.snapshot.params['id'];
+    this.route.params.subscribe(
+      (params : Params) => {
+        this.id = params['id'];
       }
     )
-    console.log(this.movie);
+    this.movie = this.movies[this.id];
     
+
     /*this.logservice.passMovieToDetails.subscribe(
       (moviePassed:Movie) => {
         this.movie = moviePassed;

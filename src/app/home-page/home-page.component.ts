@@ -22,14 +22,13 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.movies = this.logService.getMovies();
-
-    
+    this.movies = this.logService.getMovies(); 
   }
 
   passInfoToDetails(movie:Movie) {
     this.selected = movie;
-    this.logService.passMovieToDetails.emit(movie);
+    //this.logService.passMovieToDetails.emit(movie);
+    this.logService.passMovieToDetails.next(movie);
   }
 
 
