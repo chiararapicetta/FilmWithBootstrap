@@ -25,19 +25,14 @@ export class MovieDetailsComponent implements OnInit {
     this.movies = this.logService.getMovies();
     
     this.id = this.route.snapshot.params['id'];
+    this.movie = this.movies[this.id-1];
     this.route.params.subscribe(
       (params : Params) => {
         this.id = params['id'];
+        this.movie = this.movies[this.id-1];
       }
     )
-    this.movie = this.movies[this.id];
-    
-
-    /*this.logservice.passMovieToDetails.subscribe(
-      (moviePassed:Movie) => {
-        this.movie = moviePassed;
-      }
-    );*/
+  
   }
 
 
