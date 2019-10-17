@@ -9,7 +9,7 @@ export class FilmHighlitedDirective implements OnInit {
               private renderer : Renderer2) { }
 
   @HostListener('click') onClick() {
-    this.renderer.setStyle(this.elementRef.nativeElement, 'border', '2px solid black');
+    this.renderer.setStyle(this.elementRef.nativeElement, 'border', '2px solid red');
   }
 
   /*@HostListener('hover') onHover() {

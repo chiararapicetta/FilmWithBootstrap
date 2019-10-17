@@ -20,4 +20,8 @@ export class LogService {
    getMovies() {
      return this.movies;
    }
+
+   getMovie(id : number) {
+    return this.movies[id];
+   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LogService } from '../services/log.service';
 import { Movie } from '../models/movie.model';
+import { ActivatedRoute, Data } from '@angular/router';
 
 @Component({
   selector: 'app-movie-details',
@@ -9,18 +10,29 @@ import { Movie } from '../models/movie.model';
 })
 export class MovieDetailsComponent implements OnInit {
 
-  movie : Movie = null;
+  movie : Movie ;
 
-  constructor(private logservice : LogService) {
-    this.logservice.passMovieToDetails.subscribe(
-      (moviePassed:Movie) => {
-        this.movie = moviePassed;
-      }
-    );
+  constructor(private logservice : LogService,
+              private route : ActivatedRoute) {
+    
    }
 
   ngOnInit() {
+    console.log(this.movie);
+    this.route.data.subscribe(
+      (data : Data) => {
+        this.movie = data['server'];
+      }
+    )
+    console.log(this.movie);
+    
+    /*this.logservice.passMovieToDetails.subscribe(
+      (moviePassed:Movie) => {
+        this.movie = moviePassed;
+      }
+    );*/
   }
+
 
 
 }

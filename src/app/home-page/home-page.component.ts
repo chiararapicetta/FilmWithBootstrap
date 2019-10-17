@@ -14,6 +14,7 @@ export class HomePageComponent implements OnInit {
   genreSelected : string = '';
 
   movieSearched : string = '';
+  selected : Movie = null;
 
   constructor(private logService : LogService,
               private router : Router,
@@ -22,9 +23,12 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit() {
     this.movies = this.logService.getMovies();
+
+    
   }
 
   passInfoToDetails(movie:Movie) {
+    this.selected = movie;
     this.logService.passMovieToDetails.emit(movie);
   }
 
