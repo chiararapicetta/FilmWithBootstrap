@@ -1,5 +1,5 @@
 <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" name="navbar"
+    <a class="navbar-brand"
     [routerLink]="['']" 
     (click)="genreSelected=''; movieSearched=''" >MovieDB</a>
     <div class="btn-group" role="group" aria-label="Basic example">
@@ -27,9 +27,13 @@
                             <img src="{{movie.imgUrl}}" class="card-img-top">
                             <div class="card-body">
                                 <h5 class="card-title">{{movie.title}}</h5>
-                                <a href="#navbar"
+                                <a 
                                 [routerLink]="['/details', movie.id]" 
                                 >View description</a>
+                                <br>
+                                <a
+                                [routerLink]="['/trailer', movie.id]"                           
+                                >View Trailer</a>
                             </div>
                         </div>
                     </div>
@@ -41,11 +45,12 @@
                         <img src="{{movie.imgUrl}}" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">{{movie.title}}</h5>
-                            <a href="#navbar" 
-                            (click)="passInfoToDetails(movie)" 
-                            [routerLink]="['/details', movie.id]"
-                            routerLinkActive="active"
+                            <a 
+                            [routerLink]="['/details', movie.id]"                           
                             >View description</a>
+                            <a 
+                            [routerLink]="['/trailer', movie.id]"                           
+                            >View Trailer</a>
                         </div>
                     </div>
                 </div>

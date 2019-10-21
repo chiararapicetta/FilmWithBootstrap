@@ -2,6 +2,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { MOVIES } from '../movie-list';
 import { Movie } from '../models/movie.model';
 import { Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,10 @@ export class LogService {
 
   movies : Movie[] = [];
 
-  //passMovieToDetails = new EventEmitter<Movie>();
   passMovieToDetails = new Subject<Movie>();
 
   constructor() {
+
     MOVIES.forEach(movie => {
       this.movies.push(movie);
     });
@@ -26,4 +27,6 @@ export class LogService {
    getMovie(id : number) {
     return this.movies[id];
    }
+
+
 }

@@ -8,6 +8,8 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FilmHighlitedDirective } from './directives/film-highlited.directive';
 import { RoutingModule } from './routing.module';
+import { BookingComponent } from './booking/booking.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -17,12 +19,14 @@ import { RoutingModule } from './routing.module';
     HomePageComponent,
     MovieDetailsComponent,
     PageNotFoundComponent,
-    FilmHighlitedDirective
+    FilmHighlitedDirective,
+    BookingComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RoutingModule
+    RoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
