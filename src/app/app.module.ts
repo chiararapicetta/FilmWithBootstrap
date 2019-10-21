@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -9,7 +12,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { FilmHighlitedDirective } from './directives/film-highlited.directive';
 import { RoutingModule } from './routing.module';
 import { BookingComponent } from './booking/booking.component';
-import { HttpClientModule } from '@angular/common/http';
+
+
 
 
 
@@ -26,9 +30,12 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     FormsModule,
     RoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxYoutubePlayerModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+platformBrowserDynamic().bootstrapModule(AppModule);

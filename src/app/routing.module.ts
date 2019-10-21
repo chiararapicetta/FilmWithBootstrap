@@ -6,20 +6,17 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { BookingComponent } from './booking/booking.component';
 
 const appRoutes: Routes = [
-    {
-      path: '', component: HomePageComponent, children: [
-        { path: 'trailer/:id', component: BookingComponent }
-      ]
-    },
-    { path: 'details/:id', component: MovieDetailsComponent },
-    { path: 'page-not-found', component: PageNotFoundComponent },
-    { path: '**', redirectTo: '/page-not-found' }
-  ];
+  { path: '', component: HomePageComponent },
+  { path: 'trailer/:id', component: BookingComponent },
+  { path: 'details/:id', component: MovieDetailsComponent },
+  { path: 'page-not-found', component: PageNotFoundComponent },
+  { path: '**', redirectTo: '/page-not-found' }
+];
 
-  @NgModule({
-    imports: [RouterModule.forRoot(appRoutes, { scrollPositionRestoration: 'enabled' })],
-    exports: [RouterModule]
-  })
-  export class RoutingModule {
-      
-  }
+@NgModule({
+  imports: [RouterModule.forRoot(appRoutes, { scrollPositionRestoration: 'enabled' })],
+  exports: [RouterModule]
+})
+export class RoutingModule {
+
+}
