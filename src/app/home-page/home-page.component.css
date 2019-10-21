@@ -1,10 +1,9 @@
-.card-deck {
-    margin: 10px;
-    margin-top: 30px;
-}
-
 img {
     height: 200px;
+}
+
+.row {
+    margin-left: 10px;
 }
 
 .link {
@@ -17,11 +16,13 @@ img {
 }
 
 .card {
-    max-width: 300px;
+    max-width: 250px;
     float: left;
     margin-top: 20px;
+    margin-right: 10px;
     background-color: black;
+    text-align: center;
 }
 .navbar {
-    height: 70px;
+    height: 100px;
 }

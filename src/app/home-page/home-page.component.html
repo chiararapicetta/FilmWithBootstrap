@@ -1,7 +1,6 @@
+
 <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand"
-    [routerLink]="['']" 
-    (click)="genreSelected=''; movieSearched=''" >MovieDB</a>
+    <a class="navbar-brand" [routerLink]="['']" (click)="genreSelected=''; movieSearched=''">MovieDB</a>
     <div class="btn-group" role="group" aria-label="Basic example">
         <button type="button" class="btn btn-info" (click)="genreSelected='Action'; movieSearched=''"
             [routerLink]="['']">Action</button>
@@ -10,86 +9,42 @@
         <button type="button" class="btn btn-info" (click)="genreSelected='Comic'; movieSearched=''"
             [routerLink]="['']">Comic</button>
     </div>
+
     <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Dynamic Search" autocomplete="off"
-            [(ngModel)]="movieSearched" name="searching">
-        <!--<button class="btn btn-info my-2 my-sm-0" type="submit">Search</button>-->
+            <input class="form-control mr-sm-2" type="search" placeholder="Dynamic Search" autocomplete="off"
+                [(ngModel)]="movieSearched" name="searching">
     </form>
+
 </nav>
 
 <div class="row">
-    <div class="col-md-3">
-        <div class="card-deck">
-
-            <div *ngIf="movieSearched == ''; else searching">
-                    <div *ngFor="let movie of movies">
-                        <div class="card" *ngIf="genreSelected == movie.genre || genreSelected==''">
-                            <img src="{{movie.imgUrl}}" class="card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title">{{movie.title}}</h5>
-                                <a 
-                                [routerLink]="['/details', movie.id]" 
-                                >View description</a>
-                                <br>
-                                <a
-                                [routerLink]="['/trailer', movie.id]"                           
-                                >View Trailer</a>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-
-            <ng-template #searching>
-                <div *ngFor="let movie of movies">
-                    <div class="card" *ngIf="(movie.title | lowercase).includes(movieSearched | lowercase)">
-                        <img src="{{movie.imgUrl}}" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">{{movie.title}}</h5>
-                            <a 
-                            [routerLink]="['/details', movie.id]"                           
-                            >View description</a>
-                            <a 
-                            [routerLink]="['/trailer', movie.id]"                           
-                            >View Trailer</a>
-                        </div>
-                    </div>
-                </div>
-            </ng-template>
-
-        </div>
-    </div>
-    
-    <div class="col-md-9">
-        <router-outlet></router-outlet>
-    </div>
-
-</div>
-
-
-<!--<div class="card-deck">
-    <div *ngIf="movieSearched == ''; else searching">
-        <div *ngFor="let movie of movies">
+    <div *ngFor="let movie of movies">
+        <div *ngIf="movieSearched == ''; else searching">
             <div class="card" *ngIf="genreSelected == movie.genre || genreSelected==''">
                 <img src="{{movie.imgUrl}}" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">{{movie.title}}</h5>
-                    <a (click)="passInfoToDetails(movie)" [routerLink]="['/details', movie.id]">View description</a>
+                    <a [routerLink]="['/details', movie.id]">View description</a>
+                    <br>
+                    <a [routerLink]="['/trailer', movie.id]">View Trailer</a>
                 </div>
             </div>
         </div>
     </div>
+
     <ng-template #searching>
-        <div *ngFor="let movie of movies">
-            <div class="card" *ngIf="movie.title.includes(movieSearched)">
+        <div class="card-deck" *ngFor="let movie of movies">
+            <div class="card" *ngIf="(movie.title | lowercase).includes(movieSearched | lowercase)">
                 <img src="{{movie.imgUrl}}" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">{{movie.title}}</h5>
-                    <a (click)="passInfoToDetails(movie)" [routerLink]="['/details', movie.id]">View description</a>
+                    <a [routerLink]="['/details', movie.id]">View description</a>
+                    <a [routerLink]="['/trailer', movie.id]">View Trailer</a>
                 </div>
             </div>
         </div>
     </ng-template>
+
 </div>
 
-
-    <router-outlet></router-outlet>-->
+<router-outlet></router-outlet>

@@ -8,10 +8,10 @@ import { BookingComponent } from './booking/booking.component';
 const appRoutes: Routes = [
     {
       path: '', component: HomePageComponent, children: [
-        { path: 'details/:id', component: MovieDetailsComponent },
         { path: 'trailer/:id', component: BookingComponent }
       ]
     },
+    { path: 'details/:id', component: MovieDetailsComponent },
     { path: 'page-not-found', component: PageNotFoundComponent },
     { path: '**', redirectTo: '/page-not-found' }
   ];
