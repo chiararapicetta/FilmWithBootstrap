@@ -19,6 +19,8 @@ export class LogService {
 
   passDetails = new Subject<Movie>();
 
+  passGenre = new EventEmitter<string>();
+
   getMovies(): Observable<any> {
     return this.http.get(`${this.baseUrl}/movie/popular?api_key=${this.apiKey}&language=${this.language}&page=${1}`);
   }
@@ -30,6 +32,10 @@ export class LogService {
   getMovie(id) : Observable<any> {
     return this.http.get(`${this.baseUrl}/movie/${id}?api_key=${this.apiKey}&language=${this.language}`);
     
+  }
+
+  getGenres() : Observable<any> {
+    return this.http.get(`${this.baseUrl}/genre/movie/list?api_key=${this.apiKey}&language=${this.language}`);
   }
 
 

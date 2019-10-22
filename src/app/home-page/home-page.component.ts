@@ -12,6 +12,7 @@ export class HomePageComponent implements OnInit {
 
   movies: Movie[];
   genreSelected: string = '';
+  genres : [];
 
   movieSearched: string = '';
   selected: Movie = null;
@@ -27,6 +28,13 @@ export class HomePageComponent implements OnInit {
       data => {
         this.movies = data.results;
         console.log(this.movies);
+      }
+    );
+
+    this.logService.getGenres().subscribe(
+      data => {
+        this.genres = data.genres
+        console.log(data.genres);
       }
     );
   }
