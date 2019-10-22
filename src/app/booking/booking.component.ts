@@ -20,7 +20,7 @@ export class BookingComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.movies = this.logService.getMovies();
+    //this.movies = this.logService.getMovies();
 
     this.id = this.route.snapshot.params['id'];
     this.movie = this.logService.getMovie(this.id - 1);

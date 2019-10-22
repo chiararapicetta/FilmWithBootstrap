@@ -1,50 +1,54 @@
-
-<nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" [routerLink]="['']" (click)="genreSelected=''; movieSearched=''">MovieDB</a>
+<nav class="navbar navbar-dark bg-dark">
+    <!--<a class="navbar-brand" [routerLink]="['']" (click)="genreSelected=''; movieSearched=''">MovieDB</a>-->
+    <img src="https://liveiptvapks.com/wp-content/uploads/2019/01/the-movie-db-app-download.jpg" 
+    class="navbar-brand" [routerLink]="['']" (click)="genreSelected=''; movieSearched=''">
     <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-info" (click)="genreSelected='Action'; movieSearched=''"
+        <button type="button" class="btn btn-secondary" (click)="genreSelected='Action'; movieSearched=''"
             [routerLink]="['']">Action</button>
-        <button type="button" class="btn btn-info" (click)="genreSelected='Fantasy'; movieSearched=''"
+        <button type="button" class="btn btn-secondary" (click)="genreSelected='Fantasy'; movieSearched=''"
             [routerLink]="['']">Fantasy</button>
-        <button type="button" class="btn btn-info" (click)="genreSelected='Comic'; movieSearched=''"
+        <button type="button" class="btn btn-secondary" (click)="genreSelected='Comic'; movieSearched=''"
             [routerLink]="['']">Comic</button>
     </div>
 
     <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Dynamic Search" autocomplete="off"
-                [(ngModel)]="movieSearched" name="searching">
+        <input class="form-control mr-sm-2" type="search" placeholder="Dynamic Search" autocomplete="off"
+            [(ngModel)]="movieSearched" name="searching">
     </form>
 
 </nav>
 
-<div class="row">
-    <div *ngFor="let movie of movies">
-        <div *ngIf="movieSearched == ''; else searching">
-            <div class="card" *ngIf="genreSelected == movie.genre || genreSelected==''">
-                <img src="{{movie.imgUrl}}" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">{{movie.title}}</h5>
-                    <a [routerLink]="['/details', movie.id]">View description</a>
-                    <br>
-                    <a [routerLink]="['/trailer', movie.id]">View Trailer</a>
+<body>
+    <div class="row">
+        <div *ngFor="let movie of movies; let i = index">
+            <div *ngIf="movieSearched == ''; else searching">
+                <div class="card" *ngIf="genreSelected == movie.genre || genreSelected==''">
+                    <!--<img src="{{movie.imgUrl}}" class="card-img-top">-->
+                    <img src="http://image.tmdb.org/t/p/w185/{{movie.poster_path}}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">{{movie.title}}</h5>
+                        <a [routerLink]="['/details', i]">View description</a>
+                        <br>
+                        <a [routerLink]="['/trailer', i]">View Trailer</a>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <ng-template #searching>
+            <div class="card-deck" *ngFor="let movie of movies">
+                <div class="card" *ngIf="(movie.title | lowercase).includes(movieSearched | lowercase)">
+                    <img src="{{movie.imgUrl}}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">{{movie.title}}</h5>
+                        <a [routerLink]="['/details', movie.id]">View description</a>
+                        <a [routerLink]="['/trailer', movie.id]">View Trailer</a>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+
     </div>
 
-    <ng-template #searching>
-        <div class="card-deck" *ngFor="let movie of movies">
-            <div class="card" *ngIf="(movie.title | lowercase).includes(movieSearched | lowercase)">
-                <img src="{{movie.imgUrl}}" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">{{movie.title}}</h5>
-                    <a [routerLink]="['/details', movie.id]">View description</a>
-                    <a [routerLink]="['/trailer', movie.id]">View Trailer</a>
-                </div>
-            </div>
-        </div>
-    </ng-template>
-
-</div>
-
-<router-outlet></router-outlet>
+    <router-outlet></router-outlet>
+</body>

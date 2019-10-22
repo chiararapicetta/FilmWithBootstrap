@@ -12,27 +12,34 @@ import { FnParam } from '@angular/compiler/src/output/output_ast';
 })
 export class MovieDetailsComponent implements OnInit {
 
-  movies : Movie[];
-  id : number;
-  movie : Movie;
+  movies: Movie[];
+  index: number;
+  //id : number;
+  movie: Movie;
 
-  constructor(private logService : LogService,
-              private route : ActivatedRoute) {
-    
-   }
+  constructor(private logService: LogService,
+    private route: ActivatedRoute) {
+
+  }
 
   ngOnInit() {
-    this.movies = this.logService.getMovies();
-    
-    this.id = this.route.snapshot.params['id'];
-    this.movie = this.movies[this.id-1];
-    this.route.params.subscribe(
-      (params : Params) => {
-        this.id = params['id'];
-        this.movie = this.movies[this.id-1];
+
+    this.logService.getMovies().subscribe(
+      data => {
+        this.movies = data.results;
+
+        this.index = this.route.snapshot.params['id'];
+        this.movie = this.movies[this.index];
+        this.route.params.subscribe(
+          (params: Params) => {
+            this.index = params['id'];
+            this.movie = this.movies[this.index];
+          }
+        );
+
       }
-    )
-  
+    );
+
   }
 
 

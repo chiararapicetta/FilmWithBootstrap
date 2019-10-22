@@ -3,16 +3,17 @@
     <div class="row">
         <div class="col-md-6">
             <h1 class="display-4">{{movie.title}}</h1>
-            <p class="lead">{{movie.description}}</p>
+            <p class="lead">{{movie.overview}}</p>
+            <!--<p class="lead">{{movie.description}}</p>-->
 
             <a class="btn btn-primary btn-lg" role="button" 
             [routerLink]="['']">Close</a>
         </div>
         <div class="col-md-4">
-            <img src="{{movie.imgUrl}}">
+            <img src="http://image.tmdb.org/t/p/w185/{{movie.poster_path}}">
             <hr>
-            <h2>Director: {{movie.director}} </h2>
-            <h3>Minutes: {{movie.minutes}} </h3>
+            <h2>Release Date: {{movie.release_date}} </h2>
+            <h3>Vote Average: {{movie.vote_average}} </h3>
         </div>
     </div>
 
