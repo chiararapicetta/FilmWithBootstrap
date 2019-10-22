@@ -7,22 +7,15 @@ img {
     height: 200px;
 }
 
-.navbar-brand {
-    height: 90%;
-}
-
 .row {
     margin: 20px;
-    
+    margin-top: 0%;
 }
 
 a {
     color: slategray;
 }
 
-.btn {
-    border: 1px solid black;
-}
 
 .card {
     width: 250px;
@@ -37,7 +30,4 @@ a {
 .card-title{
     color: white;
 }
-.navbar {
-    height: 100px;
-    margin-bottom: 0;
-}
+

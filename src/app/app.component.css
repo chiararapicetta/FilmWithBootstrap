@@ -1,0 +1,14 @@
+
+.navbar-brand {
+    height: 90%;
+}
+
+.navbar {
+    height: 100px;
+    margin-bottom: 0;
+}
+
+.btn {
+    border: 1px solid black;
+}
+

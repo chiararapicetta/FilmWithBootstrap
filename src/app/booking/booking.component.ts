@@ -11,6 +11,7 @@ import { Movie } from '../models/movie.model';
 export class BookingComponent implements OnInit {
 
   movies: Movie[];
+  title : string;
 
   constructor(private logService: LogService,
     private route: ActivatedRoute) { }
@@ -18,13 +19,20 @@ export class BookingComponent implements OnInit {
   ngOnInit() {
 
     const id = this.route.snapshot.params['id'];
-    console.log(id);
 
     this.logService.getMovieVideo(id).subscribe(
       data => {
         this.movies = data.results;
-        console.log(this.movies);
       }, 
+      error => {
+        console.log(error);
+      }
+    );
+
+    this.logService.getMovie(id).subscribe(
+      data => {
+        this.title = data.original_title;
+      },
       error => {
         console.log(error);
       }

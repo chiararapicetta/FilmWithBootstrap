@@ -15,22 +15,24 @@ export class LogService {
 
   movies: Movie[] = [];
 
-  passMovieToDetails = new Subject<Movie>();
-
   constructor(private http: HttpClient) { }
 
+  passDetails = new Subject<Movie>();
+
   getMovies(): Observable<any> {
-    //return this.movies;
     return this.http.get(`${this.baseUrl}/movie/popular?api_key=${this.apiKey}&language=${this.language}&page=${1}`);
   }
-
-  /*getMovie(id : number)  {
-   return this.movies[id];
-  }*/
 
   getMovieVideo(id): Observable<any> {
     return this.http.get(`${this.baseUrl}/movie/${id}/videos?api_key=${this.apiKey}&language=${this.language}`);
   }
+
+  getMovie(id) : Observable<any> {
+    return this.http.get(`${this.baseUrl}/movie/${id}?api_key=${this.apiKey}&language=${this.language}`);
+    
+  }
+
+
 
   
 
