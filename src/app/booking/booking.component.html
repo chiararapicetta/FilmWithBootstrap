@@ -1,13 +1,15 @@
-<div class="jumbotron">
-    <h1 class="display-4">{{movie.title}}</h1>
-    <hr>
+<body>
+    <div class="jumbotron">
+        <h1 class="display-4">Title</h1>
+        <hr>
 
-    <div *ngIf="loading">
-        <youtube-player [videoId]="key" [height]="300" [width]="500">
-        </youtube-player>
+        <div>
+            <youtube-player [videoId]="movies[0].key" [height]="300" [width]="500">
+            </youtube-player>
+        </div>
+        <hr>
+        <div>
+            <a class="btn btn-primary btn-lg" role="button" [routerLink]="['']">Close</a>
+        </div>
     </div>
-    <hr>
-    <div>
-        <a class="btn btn-primary btn-lg" role="button" [routerLink]="['']">Close</a>
-    </div>
-</div>
+</body>

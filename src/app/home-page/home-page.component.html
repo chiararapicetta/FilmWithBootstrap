@@ -29,7 +29,7 @@
                         <h5 class="card-title">{{movie.title}}</h5>
                         <a [routerLink]="['/details', i]">View description</a>
                         <br>
-                        <a [routerLink]="['/trailer', i]">View Trailer</a>
+                        <a [routerLink]="['/trailer', movie.id]">View Trailer</a>
                     </div>
                 </div>
             </div>
@@ -38,10 +38,10 @@
         <ng-template #searching>
             <div class="card-deck" *ngFor="let movie of movies">
                 <div class="card" *ngIf="(movie.title | lowercase).includes(movieSearched | lowercase)">
-                    <img src="{{movie.imgUrl}}" class="card-img-top">
+                    <img src="http://image.tmdb.org/t/p/w185/{{movie.poster_path}}" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title">{{movie.title}}</h5>
-                        <a [routerLink]="['/details', movie.id]">View description</a>
+                        <a [routerLink]="['/details', i]">View description</a>
                         <a [routerLink]="['/trailer', movie.id]">View Trailer</a>
                     </div>
                 </div>

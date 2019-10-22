@@ -9,28 +9,31 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LogService {
 
-  baseUrl : string = 'https://api.themoviedb.org/3';
-  apiKey : string = 'c4d79d0d1e50bf8bc86b7afbd240e4df';
-  language : string = 'en-US';
+  baseUrl: string = 'https://api.themoviedb.org/3';
+  apiKey: string = 'c4d79d0d1e50bf8bc86b7afbd240e4df';
+  language: string = 'en-US';
 
-  movies : Movie[] = [];
+  movies: Movie[] = [];
 
   passMovieToDetails = new Subject<Movie>();
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-   getMovies() : Observable<any> {
-     //return this.movies;
-     return this.http.get(`${this.baseUrl}/movie/popular?api_key=${this.apiKey}&language=${this.language}&page=${1}`);
-    }
+  getMovies(): Observable<any> {
+    //return this.movies;
+    return this.http.get(`${this.baseUrl}/movie/popular?api_key=${this.apiKey}&language=${this.language}&page=${1}`);
+  }
 
-   /*getMovie(id : number)  {
-    return this.movies[id];
-   }*/
+  /*getMovie(id : number)  {
+   return this.movies[id];
+  }*/
 
-   getMovieVideo() : Observable<any> {
-    return this.http.get('https://api.themoviedb.org/3/movie/16/videos?api_key=c4d79d0d1e50bf8bc86b7afbd240e4df&language=en-US');
-   }
+  getMovieVideo(id): Observable<any> {
+    return this.http.get(`${this.baseUrl}/movie/${id}/videos?api_key=${this.apiKey}&language=${this.language}`);
+  }
 
-   
+  
+
+
+
 }

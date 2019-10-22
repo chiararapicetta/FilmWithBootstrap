@@ -22,7 +22,6 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.movies = this.logService.getMovies(); 
 
     this.logService.getMovies().subscribe(
       data => {
@@ -30,17 +29,6 @@ export class HomePageComponent implements OnInit {
         console.log(this.movies);
       }
     );
-
-    /*for (let movie in this.movies) {
-      this.logService.getMovieImage(movie.id).subscribe(
-
-      );
-    }*/
   }
-
-
-
-
-
 
 }
