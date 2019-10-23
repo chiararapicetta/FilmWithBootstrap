@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { LogService } from '../services/log.service';
 import { Movie } from '../models/movie.model';
 import { ActivatedRoute, Data, Params } from '@angular/router';
-import { FnParam } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-movie-details',

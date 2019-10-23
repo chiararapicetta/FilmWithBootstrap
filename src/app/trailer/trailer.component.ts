@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { LogService } from '../services/log.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Movie } from '../models/movie.model';
 
 @Component({
-  selector: 'app-booking',
-  templateUrl: './booking.component.html',
-  styleUrls: ['./booking.component.css']
+  selector: 'app-trailer',
+  templateUrl: './trailer.component.html',
+  styleUrls: ['./trailer.component.css']
 })
-export class BookingComponent implements OnInit {
+export class TrailerComponent implements OnInit {
 
   loading : boolean;
   movies: Movie[];
