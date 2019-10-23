@@ -14,8 +14,7 @@ export class MovieDetailsComponent implements OnInit {
 
   loading: boolean;
   movies: Movie[];
-  index: number;
-  //id : number;
+  id: number;
   movie: Movie;
 
   constructor(private logService: LogService,
@@ -27,19 +26,16 @@ export class MovieDetailsComponent implements OnInit {
 
     this.loading = false;
 
-    this.index = this.route.snapshot.params['id'];
-    this.route.params.subscribe(
-      (params : Params) => {
-        this.index = params['id'];
-        this.logService.getMovie(this.index).subscribe(
+    this.id = this.route.snapshot.params['id'];
+        this.logService.getMovie(this.id).subscribe(
           data => {
-            console.log(data);
             this.movie = data;
             this.loading = true;
           }
-        );
-      }
-    );
+        ), 
+        error => {
+          console.log(error);
+        };
   }
 
 }

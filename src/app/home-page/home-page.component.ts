@@ -43,7 +43,6 @@ export class HomePageComponent implements OnInit {
     );
     this.logService.passSearched.subscribe(
       (data : string ) => {
-        console.log(data);
         this.movieSearched = data;
       }
     )

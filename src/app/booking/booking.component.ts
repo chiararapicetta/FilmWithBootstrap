@@ -24,7 +24,6 @@ export class BookingComponent implements OnInit {
     this.logService.getMovieVideo(id).subscribe(
       data => {
         this.movies = data.results;
-        
       }, 
       error => {
         console.log(error);
