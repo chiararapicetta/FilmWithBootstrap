@@ -18,11 +18,16 @@
 
 </nav>-->
 
+
 <body>
     <div class="row">
         <div *ngFor="let movie of movies; let i = index">
-            <div *ngIf="movieSearched == ''; else searching">
-                <div class="card" *ngIf="genreSelected == movie.genre || genreSelected==''">
+            <div *ngIf="movieSearched == ''">
+                <!--<div class="card" *ngIf="genreSelected == movie.genre || genreSelected==''">-->
+                <div class="card" *ngIf="genreSelected == movie.genre_ids[0] || 
+                    genreSelected == movie.genre_ids[1] || 
+                    genreSelected == movie.genre_ids[2] || 
+                    genreSelected == null">
                     <!--<img src="{{movie.imgUrl}}" class="card-img-top">-->
                     <img src="http://image.tmdb.org/t/p/w185/{{movie.poster_path}}" class="card-img-top">
                     <div class="card-body">
@@ -35,8 +40,8 @@
             </div>
         </div>
 
-        <ng-template #searching>
-            <div class="card-deck" *ngFor="let movie of movies">
+        <div *ngFor="let movie of movies">
+            <div *ngIf="movieSearched != ''">
                 <div class="card" *ngIf="(movie.title | lowercase).includes(movieSearched | lowercase)">
                     <img src="http://image.tmdb.org/t/p/w185/{{movie.poster_path}}" class="card-img-top">
                     <div class="card-body">
@@ -46,7 +51,7 @@
                     </div>
                 </div>
             </div>
-        </ng-template>
+        </div>
 
     </div>
 

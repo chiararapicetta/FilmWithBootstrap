@@ -11,7 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class HomePageComponent implements OnInit {
 
   movies: Movie[];
-  genreSelected: string = '';
+  genreSelected: number = null;
   genres : [];
 
   movieSearched: string = '';
@@ -27,16 +27,26 @@ export class HomePageComponent implements OnInit {
     this.logService.getMovies().subscribe(
       data => {
         this.movies = data.results;
-        console.log(this.movies);
       }
     );
 
     this.logService.getGenres().subscribe(
       data => {
         this.genres = data.genres
-        console.log(data.genres);
       }
     );
+
+    this.logService.passGenre.subscribe(
+      (data : number) => {
+        this.genreSelected = data;
+      }
+    );
+    this.logService.passSearched.subscribe(
+      (data : string ) => {
+        console.log(data);
+        this.movieSearched = data;
+      }
+    )
   }
 
  

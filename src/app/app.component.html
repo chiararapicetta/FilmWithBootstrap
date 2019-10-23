@@ -1,19 +1,29 @@
 <nav class="navbar navbar-dark bg-dark">
     <!--<a class="navbar-brand" [routerLink]="['']" (click)="genreSelected=''; movieSearched=''">MovieDB</a>-->
-    <img src="https://www.themoviedb.org/assets/2/v4/logos/312x276-primary-blue-fb50dee3bf664c866fd216e6cee64af33d20707ea3091ddc65c5e8aa4c152eb2.png" 
-    class="navbar-brand" [routerLink]="['']" (click)="genreSelected=''; movieSearched=''">
+    <img src="https://www.themoviedb.org/assets/2/v4/logos/312x276-primary-blue-fb50dee3bf664c866fd216e6cee64af33d20707ea3091ddc65c5e8aa4c152eb2.png"
+        class="navbar-brand" (click)="genreSelected=null; 
+    movieSearched='';
+    passGenreSelected();
+    passMovieSearched();" [routerLink]="['']" data-toggle="tooltip" data-placement="right"
+        title="Back to the Home Page">
     <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-secondary" (click)="genreSelected='Action'; movieSearched=''"
-            [routerLink]="['']">Action</button>
-        <button type="button" class="btn btn-secondary" (click)="genreSelected='Fantasy'; movieSearched=''"
-            [routerLink]="['']">Fantasy</button>
-        <button type="button" class="btn btn-secondary" (click)="genreSelected='Comic'; movieSearched=''"
-            [routerLink]="['']">Comic</button>
+        <button type="button" class="btn btn-secondary" (click)="genreSelected=28; 
+        passGenreSelected(); 
+        movieSearched=''" [routerLink]="['']">Action</button>
+        <button type="button" class="btn btn-secondary" (click)="genreSelected=14; 
+        passGenreSelected();
+        movieSearched=''" [routerLink]="['']">Fantasy</button>
+        <button type="button" class="btn btn-secondary" (click)="genreSelected=35;
+        passGenreSelected(); 
+        movieSearched=''" [routerLink]="['']">Comedy</button>
     </div>
 
     <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Dynamic Search" autocomplete="off"
-            [(ngModel)]="movieSearched" name="searching">
+        <div>
+            <input class="form-control mr-sm-2" type="search" placeholder="Dynamic Search" autocomplete="off"
+                [(ngModel)]="movieSearched" name="searching">
+            <button class="btn btn-secondary" (click)="passMovieSearched()">Search</button>
+        </div>
     </form>
 
 </nav>
@@ -21,5 +31,6 @@
 <router-outlet></router-outlet>
 
 <div class="bottom-bar">
-    <img class="bottom-img" src="https://www.themoviedb.org/assets/2/v4/logos/408x161-powered-by-rectangle-blue-10d3d41d2a0af9ebcb85f7fb62ffb6671c15ae8ea9bc82a2c6941f223143409e.png">
+    <img class="bottom-img"
+        src="https://www.themoviedb.org/assets/2/v4/logos/408x161-powered-by-rectangle-blue-10d3d41d2a0af9ebcb85f7fb62ffb6671c15ae8ea9bc82a2c6941f223143409e.png">
 </div>

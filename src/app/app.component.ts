@@ -9,4 +9,19 @@ import { LogService } from './services/log.service';
 })
 export class AppComponent {
   title = 'movieWithBootstrap';
+  genreSelected: number = null;
+  movieSearched : string = '';
+
+  constructor(private logService: LogService) { }
+
+  passGenreSelected() {
+    this.logService.passGenre.emit(this.genreSelected);
+  }
+
+  passMovieSearched() {
+    this.logService.passSearched.emit(this.movieSearched);
+  }
+
+  
+
 }
