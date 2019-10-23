@@ -26,25 +26,20 @@ export class MovieDetailsComponent implements OnInit {
   ngOnInit() {
 
     this.loading = false;
-    this.logService.getMovies().subscribe(
-      data => {
-        this.movies = data.results;
 
-        this.index = this.route.snapshot.params['id'];
-        this.movie = this.movies[this.index];
-        this.route.params.subscribe(
-          (params: Params) => {
-            this.index = params['id'];
-            this.movie = this.movies[this.index];
+    this.index = this.route.snapshot.params['id'];
+    this.route.params.subscribe(
+      (params : Params) => {
+        this.index = params['id'];
+        this.logService.getMovie(this.index).subscribe(
+          data => {
+            console.log(data);
+            this.movie = data;
             this.loading = true;
           }
         );
-
       }
     );
-
   }
-
-
 
 }
