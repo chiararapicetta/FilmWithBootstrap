@@ -18,11 +18,9 @@ export class BookingComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-
     this.loading = false;
-    
-    const id = this.route.snapshot.params['id'];
 
+    const id = this.route.snapshot.params['id'];
     this.logService.getMovieVideo(id).subscribe(
       data => {
         this.movies = data.results;
@@ -36,6 +34,7 @@ export class BookingComponent implements OnInit {
     this.logService.getMovie(id).subscribe(
       data => {
         this.title = data.original_title;
+        this.loading = true;
       },
       error => {
         console.log(error);
