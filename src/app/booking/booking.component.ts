@@ -24,6 +24,7 @@ export class BookingComponent implements OnInit {
     this.logService.getMovieVideo(id).subscribe(
       data => {
         this.movies = data.results;
+        this.loading = true;
       }, 
       error => {
         console.log(error);
@@ -33,7 +34,6 @@ export class BookingComponent implements OnInit {
     this.logService.getMovie(id).subscribe(
       data => {
         this.title = data.original_title;
-        this.loading = true;
       },
       error => {
         console.log(error);
