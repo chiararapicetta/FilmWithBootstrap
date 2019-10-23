@@ -10,6 +10,7 @@ import { Movie } from '../models/movie.model';
 })
 export class BookingComponent implements OnInit {
 
+  loading : boolean;
   movies: Movie[];
   title : string;
 
@@ -18,11 +19,14 @@ export class BookingComponent implements OnInit {
 
   ngOnInit() {
 
+    this.loading = false;
+    
     const id = this.route.snapshot.params['id'];
 
     this.logService.getMovieVideo(id).subscribe(
       data => {
         this.movies = data.results;
+        
       }, 
       error => {
         console.log(error);

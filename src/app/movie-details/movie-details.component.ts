@@ -12,6 +12,7 @@ import { FnParam } from '@angular/compiler/src/output/output_ast';
 })
 export class MovieDetailsComponent implements OnInit {
 
+  loading: boolean;
   movies: Movie[];
   index: number;
   //id : number;
@@ -24,6 +25,7 @@ export class MovieDetailsComponent implements OnInit {
 
   ngOnInit() {
 
+    this.loading = false;
     this.logService.getMovies().subscribe(
       data => {
         this.movies = data.results;
@@ -34,6 +36,7 @@ export class MovieDetailsComponent implements OnInit {
           (params: Params) => {
             this.index = params['id'];
             this.movie = this.movies[this.index];
+            this.loading = true;
           }
         );
 
