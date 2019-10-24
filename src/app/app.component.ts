@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LogService } from './services/log.service';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,8 @@ export class AppComponent {
   genreSelected: number = null;
   movieSearched : string = '';
 
-  constructor(private logService: LogService) { }
+  constructor(private logService: LogService,
+              private authService : AuthService) { }
 
   passGenreSelected() {
     this.logService.passGenre.emit(this.genreSelected);
@@ -22,6 +24,10 @@ export class AppComponent {
   passMovieSearched() {
     this.logService.passSearched.emit(this.movieSearched);
     this.movieSearched='';
+  }
+
+  isAuthenticated() {
+    return this.authService.isAuthenticated();
   }
 
   

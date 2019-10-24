@@ -1,21 +1,22 @@
 <nav class="navbar navbar-dark bg-dark">
     <!--<a class="navbar-brand" [routerLink]="['']" (click)="genreSelected=''; movieSearched=''">MovieDB</a>-->
     <img src="https://www.themoviedb.org/assets/2/v4/logos/312x276-primary-blue-fb50dee3bf664c866fd216e6cee64af33d20707ea3091ddc65c5e8aa4c152eb2.png"
-        class="navbar-brand" (click)="genreSelected=null; 
+    *ngIf="isAuthenticated()"    
+    class="navbar-brand" (click)="genreSelected=null; 
     movieSearched='';
     passGenreSelected();
-    passMovieSearched();" [routerLink]="['']" data-toggle="tooltip" data-placement="right"
+    passMovieSearched();" [routerLink]="['home-page']" data-toggle="tooltip" data-placement="right"
         title="Back to the Home Page">
-    <div class="btn-group" role="group" aria-label="Basic example">
+    <div class="btn-group" role="group" aria-label="Basic example" *ngIf="isAuthenticated()">
         <button type="button" class="btn btn-secondary" (click)="genreSelected=28;
-        passGenreSelected();" [routerLink]="['']">Action</button>
+        passGenreSelected();" [routerLink]="['home-page']">Action</button>
         <button type="button" class="btn btn-secondary" (click)="genreSelected=14;
-        passGenreSelected();" [routerLink]="['']">Fantasy</button>
+        passGenreSelected();" [routerLink]="['home-page']">Fantasy</button>
         <button type="button" class="btn btn-secondary" (click)="genreSelected=35;
-        passGenreSelected();" [routerLink]="['']">Comedy</button>
+        passGenreSelected();" [routerLink]="['home-page']">Comedy</button>
     </div>
 
-    <form class="form-inline">
+    <form class="form-inline" *ngIf="isAuthenticated()">
         <div>
             <input class="form-control mr-sm-2" type="search" placeholder="Search" autocomplete="off"
                 [(ngModel)]="movieSearched" name="searching">

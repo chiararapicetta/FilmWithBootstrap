@@ -1,0 +1,16 @@
+.loginForm {
+    margin: 0 auto;
+    text-align: center;
+    background-color: white;
+    max-width: 400px;
+    border: 2px solid black;
+    border-radius: 10%;
+    padding: 10px;
+}
+
+body {
+    background-color: lightgray;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 30px;
+}

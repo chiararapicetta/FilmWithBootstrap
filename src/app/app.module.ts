@@ -12,9 +12,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { FilmHighlitedDirective } from './directives/film-highlited.directive';
 import { RoutingModule } from './routing.module';
 import { TrailerComponent } from './trailer/trailer.component';
-
-
-
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -24,7 +22,8 @@ import { TrailerComponent } from './trailer/trailer.component';
     MovieDetailsComponent,
     PageNotFoundComponent,
     FilmHighlitedDirective,
-    TrailerComponent
+    TrailerComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
