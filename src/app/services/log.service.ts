@@ -37,10 +37,9 @@ export class LogService {
     return this.http.get(`${this.baseUrl}/genre/movie/list?api_key=${this.apiKey}&language=${this.language}`);
   }
 
-
-
-  
-
-
+  getSearchedMovies(title) : Observable<any> {
+    return this.http.get(`${this.baseUrl}/search/movie?api_key=${this.apiKey}&language=${this.language}&query=${title}&page=1&include_adult=${false}`);
+  }
+ 
 
 }

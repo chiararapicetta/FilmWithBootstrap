@@ -21,14 +21,14 @@
 
 <body>
     <div class="row">
+
         <div *ngFor="let movie of movies; let i = index">
             <div *ngIf="movieSearched == ''">
-                <!--<div class="card" *ngIf="genreSelected == movie.genre || genreSelected==''">-->
+
                 <div class="card" *ngIf="genreSelected == movie.genre_ids[0] || 
                     genreSelected == movie.genre_ids[1] || 
                     genreSelected == movie.genre_ids[2] || 
                     genreSelected == null">
-                    <!--<img src="{{movie.imgUrl}}" class="card-img-top">-->
                     <img src="http://image.tmdb.org/t/p/w185/{{movie.poster_path}}" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title">{{movie.title}}</h5>
@@ -40,13 +40,14 @@
             </div>
         </div>
 
-        <div *ngFor="let movie of movies">
+        <div *ngFor="let movie of moviesSearched">
             <div *ngIf="movieSearched != ''">
                 <div class="card" *ngIf="(movie.title | lowercase).includes(movieSearched | lowercase)">
                     <img src="http://image.tmdb.org/t/p/w185/{{movie.poster_path}}" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title">{{movie.title}}</h5>
                         <a [routerLink]="['/details', movie.id]">View description</a>
+                        <br>
                         <a [routerLink]="['/trailer', movie.id]">View Trailer</a>
                     </div>
                 </div>

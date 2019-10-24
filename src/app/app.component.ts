@@ -16,7 +16,6 @@ export class AppComponent {
 
   passGenreSelected() {
     this.logService.passGenre.emit(this.genreSelected);
-    this.movieSearched='';
     this.logService.passSearched.emit(this.movieSearched);
   }
 

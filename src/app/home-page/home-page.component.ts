@@ -11,11 +11,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class HomePageComponent implements OnInit {
 
   movies: Movie[];
+  moviesSearched: Movie[] = null;
   genreSelected: number = null;
-  genres : [];
+  genres: [];
 
   movieSearched: string = '';
   selected: Movie = null;
+
 
   constructor(private logService: LogService,
     private router: Router,
@@ -32,22 +34,30 @@ export class HomePageComponent implements OnInit {
 
     this.logService.getGenres().subscribe(
       data => {
-        this.genres = data.genres
+        this.genres = data.genres;
       }
     );
 
     this.logService.passGenre.subscribe(
-      (data : number) => {
+      (data: number) => {
         this.genreSelected = data;
       }
     );
+
     this.logService.passSearched.subscribe(
-      (data : string ) => {
+      (data: string) => {
         this.movieSearched = data;
+        if (this.movieSearched) {
+          this.logService.getSearchedMovies(this.movieSearched).subscribe(
+            title => {
+              this.moviesSearched = title.results;
+            }
+          );
+        }
       }
-    )
+    );
+
   }
 
- 
 
 }
