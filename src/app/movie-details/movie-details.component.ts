@@ -11,7 +11,6 @@ import { ActivatedRoute, Data, Params } from '@angular/router';
 export class MovieDetailsComponent implements OnInit {
 
   loading: boolean;
-  movies: [];
   id: number;
   movie;
 

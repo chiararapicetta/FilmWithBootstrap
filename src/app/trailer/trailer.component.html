@@ -2,8 +2,8 @@
     <div class="jumbotron" *ngIf="loading">
         <h1 class="display-4">{{title}}</h1>
         <hr>
-            <youtube-player [videoId]="movies[0].key" [height]="300" [width]="500">
-            </youtube-player>
+        <youtube-player [videoId]="key" [height]="300" [width]="500">
+        </youtube-player>
         <hr>
         <div>
             <a class="btn btn-secondary btn-lg" role="button" [routerLink]="['/home-page']">Close</a>

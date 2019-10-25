@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class TrailerComponent implements OnInit {
 
   loading : boolean;
-  movies: [];
+  key : string;
   title : string;
 
   constructor(private logService: LogService,
@@ -22,7 +22,7 @@ export class TrailerComponent implements OnInit {
     const id = this.route.snapshot.params['id'];
     this.logService.getMovieVideo(id).subscribe(
       data => {
-        this.movies = data.results;
+        this.key = data.results[0].key;
         this.loading = true;
       }, 
       error => {
