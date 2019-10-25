@@ -2,6 +2,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Movie } from '../models/movie.model';
 import { Subject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class LogService {
 
   baseUrl: string = 'https://api.themoviedb.org/3';
-  apiKey: string = 'c4d79d0d1e50bf8bc86b7afbd240e4df';
+  apiKey: string = environment.apiKey;
   language: string = 'en-US';
 
   movies: Movie[] = [];
