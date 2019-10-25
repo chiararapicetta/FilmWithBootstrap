@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LogService } from '../services/log.service';
 import { ActivatedRoute } from '@angular/router';
-import { Movie } from '../models/movie.model';
 
 @Component({
   selector: 'app-trailer',
@@ -11,7 +10,7 @@ import { Movie } from '../models/movie.model';
 export class TrailerComponent implements OnInit {
 
   loading : boolean;
-  movies: Movie[];
+  movies: [];
   title : string;
 
   constructor(private logService: LogService,

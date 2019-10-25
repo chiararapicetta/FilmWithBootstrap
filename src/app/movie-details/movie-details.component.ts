@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { LogService } from '../services/log.service';
-import { Movie } from '../models/movie.model';
 import { ActivatedRoute, Data, Params } from '@angular/router';
 
 @Component({
@@ -12,9 +11,9 @@ import { ActivatedRoute, Data, Params } from '@angular/router';
 export class MovieDetailsComponent implements OnInit {
 
   loading: boolean;
-  movies: Movie[];
+  movies: [];
   id: number;
-  movie: Movie;
+  movie;
 
   constructor(private logService: LogService,
     private route: ActivatedRoute) {

@@ -1,5 +1,4 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Movie } from '../models/movie.model';
 import { Subject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
@@ -13,11 +12,11 @@ export class LogService {
   apiKey: string = environment.apiKey;
   language: string = 'en-US';
 
-  movies: Movie[] = [];
+  movies:[] = [];
 
   constructor(private http: HttpClient) { }
 
-  passDetails = new Subject<Movie>();
+  passDetails = new Subject<any>();
 
   passGenre = new EventEmitter<number>();
   passSearched = new EventEmitter<string>();

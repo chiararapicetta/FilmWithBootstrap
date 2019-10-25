@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { LogService } from '../services/log.service';
-import { Movie } from '../models/movie.model';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,13 +9,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class HomePageComponent implements OnInit {
 
-  movies: Movie[];
-  moviesSearched: Movie[] = null;
+  movies: [];
+  moviesSearched: [] = null;
   genreSelected: number = null;
   genres: [];
 
   movieSearched: string = '';
-  selected: Movie = null;
+  selected = null;
 
 
   constructor(private logService: LogService,
