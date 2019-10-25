@@ -28,8 +28,7 @@ export class HomePageComponent implements OnInit {
 
     this.logService.getMovies().subscribe(
       data => {
-        this.movies = data.results;
-      }
+        this.movies = data.results;      }
     );
 
     this.logService.getGenres().subscribe(

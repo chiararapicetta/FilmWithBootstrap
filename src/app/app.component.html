@@ -1,12 +1,17 @@
 <nav class="navbar navbar-dark bg-dark">
-    <!--<a class="navbar-brand" [routerLink]="['']" (click)="genreSelected=''; movieSearched=''">MovieDB</a>-->
     <img src="https://www.themoviedb.org/assets/2/v4/logos/312x276-primary-blue-fb50dee3bf664c866fd216e6cee64af33d20707ea3091ddc65c5e8aa4c152eb2.png"
-    *ngIf="isAuthenticated()"    
-    class="navbar-brand" (click)="genreSelected=null; 
+        *ngIf="isAuthenticated()" class="navbar-brand" (click)="genreSelected=null; 
     movieSearched='';
     passGenreSelected();
     passMovieSearched();" [routerLink]="['home-page']" data-toggle="tooltip" data-placement="right"
         title="Back to the Home Page">
+
+    <div class="logout" *ngIf="isAuthenticated()">
+        <button type="button" class="btn btn-secondary" 
+        [routerLink]="['login']"
+        (click)="deauthenticate()">Logout</button>
+    </div>
+
     <div class="btn-group" role="group" aria-label="Basic example" *ngIf="isAuthenticated()">
         <button type="button" class="btn btn-secondary" (click)="genreSelected=28;
         passGenreSelected();" [routerLink]="['home-page']">Action</button>
@@ -31,4 +36,5 @@
 <div class="bottom-bar">
     <img class="bottom-img"
         src="https://www.themoviedb.org/assets/2/v4/logos/408x161-powered-by-rectangle-blue-10d3d41d2a0af9ebcb85f7fb62ffb6671c15ae8ea9bc82a2c6941f223143409e.png">
+
 </div>
